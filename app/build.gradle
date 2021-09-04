@@ -44,6 +44,7 @@ def kotlin_version = '1.5.10'
 def koin_version = '2.2.3'
 def retrofit_version = '2.9.0'
 def okhttp_version = '4.9.0'
+def lifecycle_version = '2.3.1'
 
 dependencies {
 
@@ -57,9 +58,15 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-android-viewmodel:$koin_version"
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

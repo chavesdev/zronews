@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Paddings-->
+    <dimen name="default_padding">20dp</dimen>
+    <dimen name="button_padding">14dp</dimen>
+    <!--Margins-->
+    <dimen name="margin_between_elements">10dp</dimen>
+    <dimen name="margin_from_title">18dp</dimen>
+    <!--Text Sizes-->
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="bottomsheet_title_size">25sp</dimen>
+    <!--Corner Radius-->
+    <dimen name="default_corner_radius">10dp</dimen>
+</resources>

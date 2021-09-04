@@ -1,4 +1,4 @@
-package com.chavesdev.zronews.common.data.network.responses
+package com.chavesdev.zronews.common.data.remote.responses
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

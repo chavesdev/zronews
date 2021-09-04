@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Zro News</string>
+    <string name="action_signin">Entrar</string>
+    <string name="action_signup">Criar conta</string>
+    <string name="title_signin">Entrar</string>
+    <string name="hint_username">Nome</string>
+    <string name="hint_password">Senha</string>
+    <string name="action_continue">Continuar</string>
 </resources>
