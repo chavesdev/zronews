@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.login.repo.LoginRepo
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
+class LoginViewModel(private val loginRepo: LoginRepo, private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
 
     val loginState = MutableLiveData<LoadState>(LoadState.READY)
     val username = MutableLiveData(String())
@@ -16,7 +18,7 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
     fun tryLogin() {
         loginState.postValue(LoadState.LOADING)
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             val response = loginRepo.login(username.value!!, password.value!!)
             if(response?.token != null) {
                 loginState.postValue(LoadState.SUCCESS(response.token))
