@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.databinding.FragmentLoginBottomsheetBinding
 import com.chavesdev.zronews.login.viewmodel.LoginViewModel
@@ -45,18 +46,21 @@ class LoginBottomsheetFragment : BottomSheetDialogFragment() {
         loginViewModel.loginState.observe(this, {
             when (it) {
                 LoadState.READY -> {
-                    binding.contentProgress.hide()
+                    toggleProgress(false)
+                    toggleBtnSignin(true)
                 }
                 is LoadState.SUCCESS -> {
-                    binding.contentProgress.hide()
+                    toggleProgress(false)
+                    toggleBtnSignin(true)
                     //goToHome
                 }
-
                 LoadState.LOADING -> {
-                    binding.contentProgress.show()
+                    toggleProgress(true)
+                    toggleBtnSignin(false)
                 }
-
                 is LoadState.ERROR -> {
+                    toggleProgress(false)
+                    toggleBtnSignin(true)
                     MaterialAlertDialogBuilder(requireActivity()).apply {
                         setMessage(it.msg)
                     }.show()
@@ -73,11 +77,11 @@ class LoginBottomsheetFragment : BottomSheetDialogFragment() {
         })
     }
 
-    companion object {
+    private fun toggleProgress(show: Boolean) {
+        binding.contentProgress.isVisible = show
+    }
 
-        @JvmStatic
-        fun newInstance() = LoginBottomsheetFragment()
-
-        const val tag = "LoginBottomsheetFragment"
+    private fun toggleBtnSignin(enabled: Boolean) {
+        binding.btnSignin.isEnabled = enabled
     }
 }
