@@ -7,27 +7,43 @@
     <dialog
         android:id="@+id/loginBottomsheetFragment"
         android:name="com.chavesdev.zronews.login.ui.LoginBottomsheetFragment"
-        android:label="LoginBottomsheetFragment" />
+        android:label="LoginBottomsheetFragment" >
+        <action
+            android:id="@+id/action_loginBottomsheetFragment_to_newsHighlightsFragment"
+            app:destination="@id/newsHighlightsFragment" />
+    </dialog>
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.chavesdev.zronews.main.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_loginBottomsheetFragment"
             app:destination="@id/loginBottomsheetFragment"
             app:launchSingleTop="true" />
         <action
             android:id="@+id/action_mainFragment_to_registerBottomSheetFragment"
-            app:launchSingleTop="true"
             app:destination="@id/registerBottomSheetFragment"
-            />
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_newsHighlightsFragment"
+            app:destination="@id/newsHighlightsFragment" />
     </fragment>
 
     <dialog
         android:id="@+id/registerBottomSheetFragment"
         android:name="com.chavesdev.zronews.register.ui.RegisterBottomSheetFragment"
         android:label="fragment_register_bottom_sheet"
-        tools:layout="@layout/fragment_register_bottom_sheet" />
+        tools:layout="@layout/fragment_register_bottom_sheet" >
+        <action
+            android:id="@+id/action_registerBottomSheetFragment_to_newsHighlightsFragment"
+            app:destination="@id/newsHighlightsFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/newsHighlightsFragment"
+        android:name="com.chavesdev.zronews.news.ui.NewsHighlightsFragment"
+        android:label="fragment_news_highlights"
+        tools:layout="@layout/fragment_news_highlights" />
 </navigation>
