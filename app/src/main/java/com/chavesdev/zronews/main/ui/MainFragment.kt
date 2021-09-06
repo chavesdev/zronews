@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.chavesdev.zronews.R
+import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.databinding.FragmentMainBinding
+import com.chavesdev.zronews.main.viewModel.MainActivityViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
+
+    private val mainViewModel: MainActivityViewModel by viewModel()
 
     private var navController: NavController? = null
     private lateinit var binding: FragmentMainBinding
@@ -21,6 +26,12 @@ class MainFragment : Fragment() {
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.checkAuth()
+        registerObservables()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,5 +48,18 @@ class MainFragment : Fragment() {
 
     private fun showRegister() {
         navController?.navigate(R.id.action_mainFragment_to_registerBottomSheetFragment)
+    }
+
+    private fun registerObservables() {
+        mainViewModel.authState.observe(this, {
+            when (it) {
+                is LoadState.SUCCESS -> {
+                    it.data?.let {
+                        //navigate to home
+                        //navController.navigate()
+                    }
+                }
+            }
+        })
     }
 }

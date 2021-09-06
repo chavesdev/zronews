@@ -1,6 +1,5 @@
 package com.chavesdev.zronews.login.repo
 
-import com.chavesdev.zronews.common.repo.NetworkMapper
 import com.chavesdev.zronews.login.data.remote.datasource.LoginDataSource
 import com.chavesdev.zronews.login.data.remote.models.LoginRequest
 import com.chavesdev.zronews.login.data.remote.models.LoginResponse
@@ -9,7 +8,7 @@ import com.google.gson.Gson
 
 class LoginRepoImpl(
     private val loginDataSource: LoginDataSource,
-    private val networkMapper: NetworkMapper<LoginResponseModel, LoginResponse>,
+    private val networkMapper: LoginMapper,
     private val gson: Gson
 ) : LoginRepo {
 

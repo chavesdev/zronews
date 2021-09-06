@@ -1,6 +1,5 @@
 package com.chavesdev.zronews.register.repo
 
-import com.chavesdev.zronews.common.repo.NetworkMapper
 import com.chavesdev.zronews.register.data.remote.datasource.RegisterDataSource
 import com.chavesdev.zronews.register.data.remote.models.RegisterRequest
 import com.chavesdev.zronews.register.data.remote.models.RegisterResponse
@@ -9,7 +8,7 @@ import com.google.gson.Gson
 
 class RegisterRepoImpl(
     private val registerDataSource: RegisterDataSource,
-    private val networkMapper: NetworkMapper<RegisterResponseModel, RegisterResponse>,
+    private val networkMapper: RegisterMapper,
     private val gson: Gson
 ): RegisterRepo {
 

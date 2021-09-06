@@ -6,6 +6,7 @@ import com.chavesdev.zronews.register.data.remote.datasource.RegisterDataSourceI
 import com.chavesdev.zronews.register.data.remote.models.RegisterResponse
 import com.chavesdev.zronews.register.data.remote.service.RegisterApi
 import com.chavesdev.zronews.register.repo.RegisterMapper
+import com.chavesdev.zronews.register.repo.RegisterMapperImpl
 import com.chavesdev.zronews.register.repo.RegisterRepo
 import com.chavesdev.zronews.register.repo.RegisterRepoImpl
 import com.chavesdev.zronews.register.repo.models.RegisterResponseModel
@@ -20,7 +21,7 @@ val registerModule = module {
 
     single<RegisterDataSource> { RegisterDataSourceImpl(get()) }
 
-    single<NetworkMapper<RegisterResponseModel, RegisterResponse>>(override = true) { RegisterMapper() }
+    single<RegisterMapper>{ RegisterMapperImpl() }
 
     single<RegisterRepo> { RegisterRepoImpl(get(), get(), get()) }
 

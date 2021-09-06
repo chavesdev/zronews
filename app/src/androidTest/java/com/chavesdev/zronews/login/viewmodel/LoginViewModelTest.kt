@@ -1,6 +1,7 @@
 package com.chavesdev.zronews.login.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.chavesdev.zronews.auth.AuthManager
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.login.repo.LoginRepo
 import com.chavesdev.zronews.login.repo.models.LoginResponseModel
@@ -17,12 +18,14 @@ class LoginViewModelTest {
 
     private val loginRepo: LoginRepo = mockk(relaxed = true)
 
+    private val authManager: AuthManager = mockk(relaxed = true)
+
     @get:Rule
     val testCoroutineRule = InstantTaskExecutorRule()
 
     @Test
     fun checkViewModelStartsReady() {
-        loginViewModel = LoginViewModel(loginRepo, Dispatchers.Unconfined)
+        loginViewModel = LoginViewModel(loginRepo, authManager, Dispatchers.Unconfined)
         assertEquals(LoadState.READY, loginViewModel.loginState.value)
     }
 
@@ -32,7 +35,7 @@ class LoginViewModelTest {
         coEvery { loginRepo.login(any(), any()) } returns invalidResponse
 
         //when
-        loginViewModel = LoginViewModel(loginRepo, Dispatchers.Unconfined)
+        loginViewModel = LoginViewModel(loginRepo, authManager, Dispatchers.Unconfined)
         fillUserAndTryLogin()
 
         //then
@@ -45,7 +48,7 @@ class LoginViewModelTest {
         coEvery { loginRepo.login(any(), any()) } returns successResponse
 
         //when
-        loginViewModel = LoginViewModel(loginRepo, Dispatchers.Unconfined)
+        loginViewModel = LoginViewModel(loginRepo, authManager, Dispatchers.Unconfined)
         fillUserAndTryLogin()
 
         //then
