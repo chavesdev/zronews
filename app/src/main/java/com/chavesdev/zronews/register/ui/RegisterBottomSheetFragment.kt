@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import com.chavesdev.zronews.R
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.databinding.FragmentRegisterBottomSheetBinding
 import com.chavesdev.zronews.register.repo.models.ErrorRegisterModel
@@ -17,6 +20,8 @@ class RegisterBottomSheetFragment : BottomSheetDialogFragment() {
     private val registerViewModel: RegisterViewModel by viewModel()
 
     private lateinit var binding: FragmentRegisterBottomSheetBinding
+
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +36,7 @@ class RegisterBottomSheetFragment : BottomSheetDialogFragment() {
         binding.viewModel = registerViewModel
         binding.lifecycleOwner = this
         binding.btnSignup.setOnClickListener { registerViewModel.tryRegister() }
+        navController = findNavController()
     }
 
     override fun onResume() {
@@ -49,7 +55,7 @@ class RegisterBottomSheetFragment : BottomSheetDialogFragment() {
                 is LoadState.SUCCESS -> {
                     binding.contentProgress.isVisible = false
                     toggleBtnSignup(false)
-                    //go To Home
+                    showNews()
                 }
 
                 is LoadState.ERROR -> {
@@ -109,5 +115,9 @@ class RegisterBottomSheetFragment : BottomSheetDialogFragment() {
                 }
             }
         }
+    }
+
+    private fun showNews() {
+        navController?.navigate(R.id.action_registerBottomSheetFragment_to_newsHighlightsFragment)
     }
 }
