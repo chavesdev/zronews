@@ -1,15 +1,12 @@
 package com.chavesdev.zronews.register.di
 
-import com.chavesdev.zronews.common.repo.NetworkMapper
 import com.chavesdev.zronews.register.data.remote.datasource.RegisterDataSource
 import com.chavesdev.zronews.register.data.remote.datasource.RegisterDataSourceImpl
-import com.chavesdev.zronews.register.data.remote.models.RegisterResponse
 import com.chavesdev.zronews.register.data.remote.service.RegisterApi
 import com.chavesdev.zronews.register.repo.RegisterMapper
 import com.chavesdev.zronews.register.repo.RegisterMapperImpl
 import com.chavesdev.zronews.register.repo.RegisterRepo
 import com.chavesdev.zronews.register.repo.RegisterRepoImpl
-import com.chavesdev.zronews.register.repo.models.RegisterResponseModel
 import com.chavesdev.zronews.register.viewmodel.RegisterViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,5 +22,5 @@ val registerModule = module {
 
     single<RegisterRepo> { RegisterRepoImpl(get(), get(), get()) }
 
-    viewModel { RegisterViewModel(get()) }
+    viewModel { RegisterViewModel(get(), get()) }
 }

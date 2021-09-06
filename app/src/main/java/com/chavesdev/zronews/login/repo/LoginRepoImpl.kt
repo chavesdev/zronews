@@ -12,8 +12,8 @@ class LoginRepoImpl(
     private val gson: Gson
 ) : LoginRepo {
 
-    override suspend fun login(username: String, password: String): LoginResponseModel? {
-        val response = loginDataSource.login(LoginRequest(username, password))
+    override suspend fun login(email: String, password: String): LoginResponseModel? {
+        val response = loginDataSource.login(LoginRequest(email, password))
         if(response.isSuccessful) {
             return networkMapper.toModel(response.body()!!)
         } else {

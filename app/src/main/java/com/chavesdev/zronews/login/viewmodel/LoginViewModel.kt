@@ -17,14 +17,14 @@ class LoginViewModel(
 ) : ViewModel() {
 
     val loginState = MutableLiveData<LoadState>(LoadState.READY)
-    val username = MutableLiveData(String())
+    val email = MutableLiveData(String())
     val password = MutableLiveData(String())
     val formValid = MutableLiveData(false)
 
     fun tryLogin() {
         loginState.postValue(LoadState.LOADING)
         viewModelScope.launch(dispatcher) {
-            val response = loginRepo.login(username.value!!, password.value!!)
+            val response = loginRepo.login(email.value!!, password.value!!)
             if (response?.token != null) {
                 authManager.storeToken(response.token)
                 loginState.postValue(LoadState.SUCCESS(response.token))
@@ -36,7 +36,7 @@ class LoginViewModel(
 
     fun checkForm() {
         formValid.postValue(
-            (username.value?.isNotEmpty() ?: false && password.value?.isNotEmpty() ?: false)
+            (email.value?.isNotEmpty() ?: false && password.value?.isNotEmpty() ?: false)
         )
     }
 }

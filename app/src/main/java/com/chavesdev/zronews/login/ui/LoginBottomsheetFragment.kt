@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import com.chavesdev.zronews.auth.AuthManager
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.databinding.FragmentLoginBottomsheetBinding
 import com.chavesdev.zronews.login.viewmodel.LoginViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -70,7 +68,7 @@ class LoginBottomsheetFragment : BottomSheetDialogFragment() {
             }
         })
 
-        loginViewModel.username.observe(this, {
+        loginViewModel.email.observe(this, {
             loginViewModel.checkForm()
         })
 

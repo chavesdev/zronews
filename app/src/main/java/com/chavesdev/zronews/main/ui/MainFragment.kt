@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -55,6 +56,7 @@ class MainFragment : Fragment() {
             when (it) {
                 is LoadState.SUCCESS -> {
                     it.data?.let {
+                        Toast.makeText(requireContext(), "User is logged in", Toast.LENGTH_LONG).show()
                         //navigate to home
                         //navController.navigate()
                     }

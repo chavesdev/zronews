@@ -56,7 +56,7 @@ class LoginViewModelTest {
     }
 
     private fun fillUserAndTryLogin() {
-        loginViewModel.username.postValue("john@doe.com")
+        loginViewModel.email.postValue("john@doe.com")
         loginViewModel.password.postValue("123456")
         loginViewModel.tryLogin()
     }

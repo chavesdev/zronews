@@ -3,6 +3,7 @@ package com.chavesdev.zronews.register.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chavesdev.zronews.auth.AuthManager
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.register.repo.RegisterRepo
 import kotlinx.coroutines.CoroutineDispatcher
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class RegisterViewModel(
     private val registerRepo: RegisterRepo,
+    private val authManager: AuthManager,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
@@ -31,6 +33,7 @@ class RegisterViewModel(
         viewModelScope.launch(dispatcher) {
             val response = registerRepo.register(name.value!!, email.value!!, password.value!!)
             if (response?.token != null) {
+                authManager.storeToken(response.token)
                 registerState.postValue(LoadState.SUCCESS(response.token))
             } else {
                 registerState.postValue(LoadState.ERROR(errors = response?.errors))
