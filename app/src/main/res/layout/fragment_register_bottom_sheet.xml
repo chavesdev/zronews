@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chavesdev.zronews.register.viewmodel.RegisterViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            tools:context=".register.ui.RegisterBottomSheetFragment">
+
+            <TextView
+                android:id="@+id/txt_signin_title"
+                style="@style/BottomSheetTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_signup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_from_title"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@id/txt_signin_title">
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:hint="@string/hint_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={viewModel.name}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@id/input_name">
+
+                <EditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@={viewModel.email}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@id/input_email"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="username"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.password}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@id/input_password"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/edt_password_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="username"
+                    android:hint="@string/hint_password_confirm"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.passwordConfirm}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:enabled="@{viewModel.formValid}"
+                android:text="@string/action_continue"
+                app:layout_constraintTop_toBottomOf="@id/input_password_confirm" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content_progress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/white_alpha_70"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

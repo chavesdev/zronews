@@ -28,9 +28,14 @@ class MainFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         binding.btnSignin.setOnClickListener { showLogin() }
+        binding.btnSignup.setOnClickListener { showRegister() }
     }
 
     private fun showLogin() {
         navController?.navigate(R.id.action_mainFragment_to_loginBottomsheetFragment)
+    }
+
+    private fun showRegister() {
+        navController?.navigate(R.id.action_mainFragment_to_registerBottomSheetFragment)
     }
 }

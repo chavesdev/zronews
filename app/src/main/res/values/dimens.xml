@@ -2,7 +2,7 @@
 <resources>
     <!--Paddings-->
     <dimen name="default_padding">20dp</dimen>
-    <dimen name="button_padding">14dp</dimen>
+    <dimen name="button_padding">15dp</dimen>
     <!--Margins-->
     <dimen name="margin_between_elements">10dp</dimen>
     <dimen name="margin_from_title">18dp</dimen>
@@ -11,4 +11,5 @@
     <dimen name="bottomsheet_title_size">25sp</dimen>
     <!--Corner Radius-->
     <dimen name="default_corner_radius">10dp</dimen>
+    <dimen name="bottomsheet_corner_radius">15dp</dimen>
 </resources>

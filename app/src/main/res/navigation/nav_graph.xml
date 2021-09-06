@@ -19,5 +19,16 @@
             app:destination="@id/loginBottomsheetFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_registerBottomSheetFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/registerBottomSheetFragment"
+            app:popUpTo="@id/mainFragment"/>
     </fragment>
+
+    <dialog
+        android:id="@+id/registerBottomSheetFragment"
+        android:name="com.chavesdev.zronews.register.ui.RegisterBottomSheetFragment"
+        android:label="fragment_register_bottom_sheet"
+        tools:layout="@layout/fragment_register_bottom_sheet" />
 </navigation>
