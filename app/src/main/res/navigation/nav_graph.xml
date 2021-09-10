@@ -45,5 +45,9 @@
         android:id="@+id/newsHighlightsFragment"
         android:name="com.chavesdev.zronews.news.ui.NewsHighlightsFragment"
         android:label="fragment_news_highlights"
-        tools:layout="@layout/fragment_news_highlights" />
+        tools:layout="@layout/fragment_news_highlights" >
+        <action
+            android:id="@+id/action_newsHighlightsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

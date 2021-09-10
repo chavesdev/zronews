@@ -1,12 +1,14 @@
 package com.chavesdev.zronews.register.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.chavesdev.zronews.auth.AuthManager
 import com.chavesdev.zronews.common.util.LoadState
 import com.chavesdev.zronews.register.repo.RegisterRepo
 import com.chavesdev.zronews.register.repo.models.ErrorRegisterModel
 import com.chavesdev.zronews.register.repo.models.RegisterResponseModel
 import io.mockk.coEvery
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -18,12 +20,14 @@ class RegisterViewModelTest {
 
     private val registerRepo: RegisterRepo = mockk()
 
+    private val authManager: AuthManager = mockk(relaxed = true)
+
     @get:Rule
     val executorRule = InstantTaskExecutorRule()
 
     @Test
     fun checkViewModelStartsReady() {
-        registerViewModel = RegisterViewModel(registerRepo, Dispatchers.Unconfined)
+        registerViewModel = RegisterViewModel(registerRepo, authManager, Dispatchers.Unconfined)
         assertEquals(LoadState.READY, registerViewModel.registerState.value)
     }
 
@@ -31,7 +35,7 @@ class RegisterViewModelTest {
     fun checkErrorResponse() {
         //given
         coEvery { registerRepo.register(any(), any(), any()) } returns invalidResponse
-        registerViewModel = RegisterViewModel(registerRepo, Dispatchers.Unconfined)
+        registerViewModel = RegisterViewModel(registerRepo, authManager, Dispatchers.Unconfined)
 
         //when
         fillUserIncorrectlyAndTryRegister()
@@ -44,20 +48,21 @@ class RegisterViewModelTest {
     fun checkSuccessResponse() {
         //given
         coEvery { registerRepo.register(any(), any(), any()) } returns successResponse
-        registerViewModel = RegisterViewModel(registerRepo, Dispatchers.Unconfined)
+        registerViewModel = RegisterViewModel(registerRepo, authManager, Dispatchers.Unconfined)
 
         //when
         fillUserCorrectly()
         registerViewModel.tryRegister()
 
         //then
+        verify { authManager.storeToken(any()) }
         assert(registerViewModel.registerState.value is LoadState.SUCCESS)
     }
 
     @Test
     fun checkCorrectValuesMakeformValid() {
         //given
-        registerViewModel = RegisterViewModel(registerRepo, Dispatchers.Main)
+        registerViewModel = RegisterViewModel(registerRepo, authManager, Dispatchers.Main)
 
         //when
         fillUserCorrectly()

@@ -62,6 +62,21 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="ZroTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="ZroNewsTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/title_news_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+
     <style name="ZroTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="background">@null</item>
         <item name="android:background">@null</item>

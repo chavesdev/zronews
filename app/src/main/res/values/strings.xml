@@ -12,4 +12,5 @@
     <string name="hint_name">Nome</string>
     <string name="hint_password_confirm">Senha novamente</string>
     <string name="hint_email">E-mail</string>
+    <string name="title_highlights">Mais vistas</string>
 </resources>
