@@ -1,67 +1,40 @@
 package com.chavesdev.zronews.login.ui
 
-import androidx.test.core.app.launchActivity
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
-import com.chavesdev.zronews.R
-import com.chavesdev.zronews.main.ui.MainActivity
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
+import com.chavesdev.zronews.MainActivityRobot
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
+@LargeTest
 class LoginBottomsheetFragmentTest {
 
     @Test
     fun checkLoginFormIsOpening() {
-        launchActivity<MainActivity>().apply {
-            openDialog()
-            onView(withText("Entrar")).check(matches(isDisplayed()))
-            onView(withId(R.id.btn_signin)).check(matches(isNotEnabled()))
-        }
+        MainActivityRobot()
+            .startMainActivity()
+            .openLoginDialog()
+            .checkLoginTitle()
+            .checkLoginButtonIsDisabled()
     }
 
     @Test
     fun checkFillingFormIsEnablingButton() {
-        launchActivity<MainActivity>().apply {
-            openDialog()
-            fillText(R.id.edt_username, "john@doe.com")
-            fillText(R.id.edt_password, "123456")
-            onView(withId(R.id.btn_signin)).check(matches(isEnabled()))
-        }
+        MainActivityRobot()
+            .startMainActivity()
+            .openLoginDialog()
+            .fillLoginForm()
+            .checkLoginButtonIsEnabled()
     }
 
     @Test
     fun checkProgressIsShowingAfterFillForm() {
-        launchActivity<MainActivity>().apply {
-            openDialog()
-            fillText(R.id.edt_username, "john@doe.com")
-            fillText(R.id.edt_password, "123456")
-            clickOn(R.id.btn_signin)
-            checkIsDisplayed(R.id.content_progress)
-        }
-    }
-
-    //UIAutomator
-    private fun openDialog() {
-        onView(withId(R.id.btn_signin)).perform(click())
-    }
-
-    private fun closeKeyboard() {
-        Espresso.closeSoftKeyboard()
-    }
-
-    private fun fillText(id: Int, text: String) {
-        onView(withId(id)).perform(typeText(text))
-        closeKeyboard()
-    }
-
-    private fun clickOn(id: Int) {
-        onView(withId(id)).perform(click())
-    }
-
-    private fun checkIsDisplayed(id: Int) {
-        onView(withId(id)).check(matches(isDisplayed()))
+        MainActivityRobot()
+            .startMainActivity()
+            .openLoginDialog()
+            .fillLoginForm()
+            .tapLoginButton()
+            .checkLoginProgressIsVisible()
     }
 }
