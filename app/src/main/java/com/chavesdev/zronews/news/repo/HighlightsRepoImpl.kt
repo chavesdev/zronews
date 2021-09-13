@@ -1,13 +1,13 @@
 package com.chavesdev.zronews.news.repo
 
 import android.util.Log
-import com.chavesdev.zronews.news.data.remote.datasource.NewsDataSource
+import com.chavesdev.zronews.news.data.remote.datasource.HighlightsDataSource
 import com.chavesdev.zronews.news.data.remote.models.HighlightListResponse
 import com.chavesdev.zronews.news.repo.models.HighlightListModel
 import com.google.gson.Gson
 
 class HighlightsRepoImpl(
-    val datasource: NewsDataSource,
+    val datasource: HighlightsDataSource,
     private val highlightsMapper: HighlightsMapper,
     val gson: Gson
 ) : HighlightsRepo {

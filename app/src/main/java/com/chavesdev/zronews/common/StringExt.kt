@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @SuppressLint("SimpleDateFormat")
-fun String.toDate(format: String = "yyyy-MM-dd'T'HH:mm:ss'Z'") : Date? {
+fun String.toDate(format: String = "yyyy-MM-dd'T'HH:mm:ss.'000Z'") : Date? {
     val dateFormat = SimpleDateFormat(format)
     try {
         return dateFormat.parse(this)

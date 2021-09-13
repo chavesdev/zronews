@@ -13,4 +13,5 @@
     <string name="hint_password_confirm">Senha novamente</string>
     <string name="hint_email">E-mail</string>
     <string name="title_highlights">Mais vistas</string>
+    <string name="title_last_news">Últimas notícias</string>
 </resources>
