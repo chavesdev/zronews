@@ -37,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_between_elements"
                 android:orientation="horizontal"
-                app:flow_maxElementsWrap="2"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/title_highlights"
                 tools:itemCount="3"
@@ -47,7 +46,7 @@
                 android:id="@+id/progress_highlights"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/recycler_highlights"
+                app:layout_constraintTop_toBottomOf="@id/title_highlights"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/recycler_highlights" />

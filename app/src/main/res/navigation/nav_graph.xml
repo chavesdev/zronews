@@ -7,7 +7,7 @@
     <dialog
         android:id="@+id/loginBottomsheetFragment"
         android:name="com.chavesdev.zronews.login.ui.LoginBottomsheetFragment"
-        android:label="LoginBottomsheetFragment" >
+        android:label="LoginBottomsheetFragment">
         <action
             android:id="@+id/action_loginBottomsheetFragment_to_newsHighlightsFragment"
             app:destination="@id/newsHighlightsFragment" />
@@ -35,7 +35,7 @@
         android:id="@+id/registerBottomSheetFragment"
         android:name="com.chavesdev.zronews.register.ui.RegisterBottomSheetFragment"
         android:label="fragment_register_bottom_sheet"
-        tools:layout="@layout/fragment_register_bottom_sheet" >
+        tools:layout="@layout/fragment_register_bottom_sheet">
         <action
             android:id="@+id/action_registerBottomSheetFragment_to_newsHighlightsFragment"
             app:destination="@id/newsHighlightsFragment" />
@@ -45,23 +45,25 @@
         android:id="@+id/newsHighlightsFragment"
         android:name="com.chavesdev.zronews.feed.ui.FeedFragment"
         android:label="fragment_news_highlights"
-        tools:layout="@layout/fragment_news_highlights" >
+        tools:layout="@layout/fragment_news_highlights">
         <action
             android:id="@+id/action_newsHighlightsFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
         <action
             android:id="@+id/action_newsHighlightsFragment_to_newsDetailsFragment"
-            app:destination="@id/newsDetailsFragment">
+            app:destination="@id/newsDetailsFragment"
+            app:enterAnim="@anim/fade_in_up"
+            app:popExitAnim="@anim/fade_out_down">
             <argument
                 android:name="paramNews"
-                app:argType="com.chavesdev.zronews.feed.common.repo.models.NewsItemModel"/>
+                app:argType="com.chavesdev.zronews.feed.common.repo.models.NewsItemModel" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/newsDetailsFragment"
         android:name="com.chavesdev.zronews.feed.details.ui.NewsDetailsFragment"
         android:label="fragment_news_details"
-        tools:layout="@layout/fragment_news_details" >
+        tools:layout="@layout/fragment_news_details">
         <argument
             android:name="paramNews"
             app:argType="com.chavesdev.zronews.feed.common.repo.models.NewsItemModel" />

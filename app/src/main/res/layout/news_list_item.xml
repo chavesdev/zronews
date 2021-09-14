@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_between_elements"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding"
         android:onClick="@{viewModel.onClick}"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
@@ -53,9 +54,10 @@
             app:layout_constraintTop_toBottomOf="@id/text_news_title"
             android:layout_marginTop="@dimen/margin_between_elements"
             android:gravity="start"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/card_img"
-            android:maxLines="2"
+            android:maxLines="1"
             android:text="@{viewModel.description}"
             tools:text="Os desafios de comer saudavel no seculo 21"/>
 

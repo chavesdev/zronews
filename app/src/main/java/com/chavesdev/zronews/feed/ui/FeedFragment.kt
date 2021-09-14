@@ -52,13 +52,13 @@ class FeedFragment : Fragment(), OnItemClickListener {
         highlightsAdapter.onItemClickListener = this
         binding.recyclerHighlights.adapter = highlightsAdapter
         binding.recyclerNews.adapter = newsAdapter
+        highlightListViewModel.loadHighlights()
+        setUpBottomSheet()
     }
 
     override fun onResume() {
         super.onResume()
         registerObservables()
-        highlightListViewModel.loadHighlights()
-        setUpBottomSheet()
     }
 
     private fun registerObservables() {

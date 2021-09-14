@@ -66,11 +66,11 @@ class HighlightsAdapter : RecyclerView.Adapter<HighlightsAdapter.HighlightViewHo
         lp.height = lp.height
         lp.width = itemWidth.toInt()
         holder.binding.root.layoutParams = lp
-        holder.binding.root.setPadding(0, 0, HIGHLIGHT_PADDING_RIGHT, 0)
+        holder.binding.root.setPadding(0, 0, HIGHLIGHT_PADDING, HIGHLIGHT_PADDING)
     }
 
     companion object {
         const val HIGHLIGHT_PERCENT_WIDTH = 0.6
-        const val HIGHLIGHT_PADDING_RIGHT = 30
+        const val HIGHLIGHT_PADDING = 30
     }
 }
