@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/default_padding"
-        tools:context=".news.ui.NewsHighlightsFragment">
+        tools:context=".feed.ui.FeedFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/search_container"
