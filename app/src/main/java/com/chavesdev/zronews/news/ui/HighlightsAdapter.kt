@@ -31,13 +31,7 @@ class HighlightsAdapter : RecyclerView.Adapter<HighlightsAdapter.HighlightViewHo
     }
 
     override fun onBindViewHolder(holder: HighlightViewHolder, position: Int) {
-        val itemWidth = screenWidth * 0.6
-        val lp = holder.binding.root.layoutParams
-        lp.height = lp.height
-        lp.width = itemWidth.toInt()
-        holder.binding.root.layoutParams = lp
-        holder.binding.root.setPadding(0,0,30,0)
-
+        adjustWidth(holder)
         holder.bind(highlightsList[position])
     }
 
@@ -47,5 +41,19 @@ class HighlightsAdapter : RecyclerView.Adapter<HighlightsAdapter.HighlightViewHo
     fun updateHighlights(newList: MutableList<NewsItemListViewModel>) {
         highlightsList = newList
         notifyDataSetChanged()
+    }
+
+    private fun adjustWidth(holder: HighlightViewHolder) {
+        val itemWidth = screenWidth * HIGHLIGHT_PERCENT_WIDTH
+        val lp = holder.binding.root.layoutParams
+        lp.height = lp.height
+        lp.width = itemWidth.toInt()
+        holder.binding.root.layoutParams = lp
+        holder.binding.root.setPadding(0,0, HIGHLIGHT_PADDING_RIGHT,0)
+    }
+
+    companion object{
+        const val HIGHLIGHT_PERCENT_WIDTH = 0.6
+        const val HIGHLIGHT_PADDING_RIGHT = 30
     }
 }
