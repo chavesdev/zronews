@@ -5,6 +5,8 @@ Features implementadas
  - Login
  - Register
  - AuthManager
+ - Feed
+ - Detalhes de Noticia
 ```
 
 Tecnologias implementadas
